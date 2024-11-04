@@ -21,17 +21,17 @@ const HomePage = () => {
     monthDays,
     missingDates,
     todaysMonthName,
-    bookChapters,
-    bookName,
+    missingTeachings,
     stats,
+    /* bookChapters,
+    bookName,
     missingChaptersNVI,
     missingChaptersTorresAmat,
     missingChaptersRV1909,
     missingChaptersFreeWorld,
-    missingTeachings,
     handlePreviousBook,
     handleNextBook,
-    onCalendarChapterClick,
+    onCalendarChapterClick, */
     teachingsBookChapters,
     teachingsBookName,
     handlePreviousTeachingsBook,
@@ -132,7 +132,7 @@ const HomePage = () => {
           </Grid>
         </CardContent>
       </Card>
-      <Card>
+      {/* <Card>
         <CardHeader title={"Capítulos"} />
         <CardContent>
           <Grid container spacing={2}>
@@ -232,7 +232,7 @@ const HomePage = () => {
             </Grid>
           </Grid>
         </CardContent>
-      </Card>
+      </Card> */}
       <Card>
         <CardHeader title={"Enseñanzas"} />
         <CardContent>

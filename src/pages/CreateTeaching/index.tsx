@@ -15,6 +15,10 @@ const CreateTeachingPage = () => {
     text,
     templates,
     onCopyTemplateClick,
+    onFormatTextClick,
+    onGroqTeachingSubmit,
+    imagePrompt,
+    onPostGroqSaintImage,
   } = useCreateTeaching();
 
   return (
@@ -63,8 +67,17 @@ const CreateTeachingPage = () => {
                       helperText={errors.chapter?.message}
                     />
                   </Grid>
-                  <Grid item xs={9}>
+                  <Grid item xs={6}>
                     <input {...register("image")} type="file" />
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      onClick={onFormatTextClick}
+                    >
+                      Formatear
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
@@ -81,6 +94,39 @@ const CreateTeachingPage = () => {
           </Grid>
           <Grid item xs={4}>
             <StyledBox>
+              <div>
+                <Button
+                  fullWidth
+                  color="secondary"
+                  variant="contained"
+                  onClick={onGroqTeachingSubmit}
+                >
+                  Generar Enseñanza
+                </Button>
+              </div>
+              <div>
+                <Button
+                  fullWidth
+                  color="secondary"
+                  variant="contained"
+                  onClick={onPostGroqSaintImage}
+                >
+                  Generar Prompt de Imagen
+                </Button>
+              </div>
+              <div>
+                {imagePrompt && (
+                  <Button
+                    fullWidth
+                    color="info"
+                    variant="contained"
+                    onClick={() => navigator.clipboard.writeText(imagePrompt)}
+                  >
+                    Copiar
+                  </Button>
+                )}
+                <Typography variant="h5">{imagePrompt}</Typography>
+              </div>
               <Typography variant="h4">Templates</Typography>
               <div style={{ display: "flex", gap: 10 }}>
                 <Typography variant="h5">Crear Enseñanza</Typography>
@@ -92,9 +138,9 @@ const CreateTeachingPage = () => {
                   Copiar
                 </Button>
               </div>
-              <Typography variant="body1">
+              {/* <Typography variant="body1">
                 {templates.createTeaching}
-              </Typography>
+              </Typography> */}
               <div style={{ display: "flex", gap: 10 }}>
                 <Typography variant="h5">Imagen</Typography>
                 <Button
@@ -105,7 +151,7 @@ const CreateTeachingPage = () => {
                   Copiar
                 </Button>
               </div>
-              <Typography variant="body1">{templates.image}</Typography>
+              {/* <Typography variant="body1">{templates.image}</Typography> */}
             </StyledBox>
           </Grid>
         </Grid>

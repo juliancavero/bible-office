@@ -23,6 +23,9 @@ const CreateSaintPage = () => {
     text,
     templates,
     onCopyTemplateClick,
+    onPostGroqSaintText,
+    onPostGroqSaintImage,
+    imagePrompt,
   } = useCreateSaint();
   return (
     <MainPaper>
@@ -91,6 +94,41 @@ const CreateSaintPage = () => {
           </Grid>
           <Grid item xs={4}>
             <StyledBox>
+              <div>
+                <Button
+                  fullWidth
+                  color="secondary"
+                  variant="contained"
+                  onClick={onPostGroqSaintText}
+                >
+                  Generar Texto Santo
+                </Button>
+              </div>
+              <div>
+                <Button
+                  fullWidth
+                  color="secondary"
+                  variant="contained"
+                  onClick={onPostGroqSaintImage}
+                >
+                  Generar Prompt de Imagen
+                </Button>
+              </div>
+              <div>
+                {imagePrompt && (
+                  <Button
+                    fullWidth
+                    color="info"
+                    variant="contained"
+                    onClick={() =>
+                      navigator.clipboard.writeText(imagePrompt.trim())
+                    }
+                  >
+                    Copiar
+                  </Button>
+                )}
+                <Typography variant="h5">{imagePrompt}</Typography>
+              </div>
               <Typography variant="h4">Templates</Typography>
               <div style={{ display: "flex", gap: 10 }}>
                 <Typography variant="h5">Crear Santo</Typography>
@@ -102,7 +140,7 @@ const CreateSaintPage = () => {
                   Copiar
                 </Button>
               </div>
-              <Typography variant="body1">{templates.createSaint}</Typography>
+              {/* <Typography variant="body1">{templates.createSaint}</Typography> */}
               <div style={{ display: "flex", gap: 10 }}>
                 <Typography variant="h5">Imagen</Typography>
                 <Button
@@ -113,7 +151,7 @@ const CreateSaintPage = () => {
                   Copiar
                 </Button>
               </div>
-              <Typography variant="body1">{templates.image}</Typography>
+              {/* <Typography variant="body1">{templates.image}</Typography> */}
             </StyledBox>
           </Grid>
         </Grid>

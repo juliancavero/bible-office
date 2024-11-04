@@ -20,7 +20,28 @@ const insertBeginingTitle = (text: string) => {
   return text.replace(/^(.*)/, "### $1");
 };
 
+const formatGroqTeaching = (text: string) => {
+  return text
+    .replace(/\\n\\n\\n/g, "\n\n")
+    .replace(/\\n\\n/g, "\n\n")
+    .replace(/\\\"/g, '"')
+    .replace(/_/g, "")
+    .replace(/\\n/g, "\n\n")
+    .replace(/\n\n\n"/g, "\n")
+    .trim();
+};
+
+const formatGroqSaintText = (text: string) => {
+  return text
+    .replace(/^> *(\S)/gm, "> $1")
+    .replace(/^(> .+?)(?<!\s\s)$/gm, "$1  ")
+    .replace(/\n{2,}(?=> )/g, "\n")
+    .trim();
+};
+
 export {
+  formatGroqSaintText,
+  formatGroqTeaching,
   insertBeginingTitle,
   insertSpaceBeforeNumbers,
   insertTitles,
